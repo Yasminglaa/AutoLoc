@@ -15,7 +15,17 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Reservation {
+    @ManyToOne
+    @JoinColumn(name = "id_vehicule")
+    private Vehicule vehicule;
 
+    @ManyToOne
+    @JoinColumn(name = "id_client")
+    private Client client;
+
+    @OneToOne
+    @JoinColumn(name = "id_contrat")
+    private Contrat contrat;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idReservation;

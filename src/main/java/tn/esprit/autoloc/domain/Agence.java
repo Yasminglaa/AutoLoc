@@ -5,7 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
+import java.util.List;
+import java.util.ArrayList;
 @Entity
 @Table(name = "agence")
 @Getter
@@ -13,7 +14,11 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Agence {
+    @OneToMany(mappedBy = "agence")
+    private List<Vehicule> vehicules = new ArrayList<>();
 
+    @OneToMany(mappedBy = "agence")
+    private List<Employe> employes = new ArrayList<>();
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idAgence;
